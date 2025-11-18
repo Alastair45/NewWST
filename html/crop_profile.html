@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Profile Management</title>
+    <link rel="stylesheet" href="../css/styles3.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <button id="toggleSidebar" class="hamburger" aria-label="Toggle sidebar">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <h1>Hydroponics</h1>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar" class="sidebar-collapsed">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li class="active"><a href="crop_profile.html">Crop Profile</a></li>
+            </ul>
+        </aside>
+
+        <main id="crop-profile-section" class="content-section">
+            <section>
+                <h2>Current Crop Management</h2>
+
+                <div class="setup-controls"
+                    style="display:flex; gap: 20px; align-items: flex-end; margin-bottom: 30px;">
+
+                    <div>
+                        <label for="cropName" style="font-weight: 600; display: block; margin-bottom: 5px;">Select Crop
+                            Type:</label>
+                        <select id="cropName" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                            <option value="Lettuce">Lettuce (Leafy Greens)</option>
+                            <option value="Tomato">Tomato (Fruiting)</option>
+                            <option value="Basil">Basil (Herb)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="startDate" style="font-weight: 600; display: block; margin-bottom: 5px;">Grow Cycle
+                            Start Date:</label>
+                        <input type="date" id="startDate"
+                            style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                    </div>
+
+                    <button id="btnSaveProfile"
+                        style="padding: 10px 20px; border: none; border-radius: 6px; background: #078080; color: #fff; cursor: pointer;">
+                        Save Profile
+                    </button>
+                </div>
+
+                <div class="stage-tracker card"
+                    style="padding: 20px; border-radius: 8px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px;">
+                    <h3>Lifecycle Tracker</h3>
+                    <div id="currentStageInfo">
+                        <p style="font-size: 1.1rem; margin: 10px 0;">
+                            Current Crop: <strong id="displayCrop">—</strong>
+                        </p>
+                        <p style="font-size: 1.5rem; margin: 10px 0; color: #078080;">
+                            Stage: <strong id="displayStage">Loading...</strong>
+                            (<span id="displayDay">Day —</span> / <span id="displayTotalDays">Total Days —</span>)
+                        </p>
+
+                        <div class="optimal-conditions"
+                            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                            <div class="card-sm"><strong>Target Temp:</strong> <span id="targetTemp">—</span></div>
+                            <div class="card-sm"><strong>Target pH:</strong> <span id="targetPH">—</span></div>
+                            <div class="card-sm"><strong>Target Light (hrs):</strong> <span id="targetLight">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Stage Definitions (Read-Only)</h3>
+                <p>These are the pre-defined stages and their optimal conditions for the selected crop.</p>
+                <div id="stageTableContainer">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hydroponics</p>
+    </footer>
+
+    <script src="../js/script2.js"></script>
+    <script src="../js/crop_profile.js"></script>
+</body>
+
+</html>
