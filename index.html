@@ -7,7 +7,7 @@
     <title>HydroSmart Hydroponics</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet" />
-    </head>
+</head>
 
 <body>
     <header>
@@ -21,14 +21,11 @@
         <h1>Hydroponics</h1>
         <nav>
             <ul class="nav-links">
-                
                 <li>
-                    <a href="html/notifications.html" id="btnNotifications" aria-label="Notifications" 
-                       style="padding: 10px 12px; font-size: 1.2rem; background: none; border: none; cursor: pointer; color: inherit; text-decoration: none; border-radius: 6px; margin-right: 5px;">
-                       🔔
+                    <a href="html/notifications.html" id="btnNotifications" aria-label="Notifications">
+                        🔔
                     </a>
                 </li>
-                
                 <li><button id="btnArticle">Home</button></li>
                 <li><button id="btnTable">Table</button></li>
                 <li><button id="btnChart">Chart</button></li>
@@ -40,65 +37,59 @@
         <aside id="sidebar" class="sidebar-collapsed">
             <ul>
                 <li><a href="html/crop_profile.html">Crop Profile</a></li>
-                <li><a href="html/notifications.html">Data Alerts</a></li> 
-                <li><a href="html/About me.html"></a>About Me</li>
+                <li><a href="html/notifications.html">Data Alerts</a></li>
+                <li><a href="html/About me.html">About Me</a></li>
             </ul>
         </aside>
 
         <main id="article-section" class="content-section">
             <section>
-                <h2>Yesterdays's Summary</h2>
+                <div id="weatherUpdate">
+                    <h3>Latest Weather</h3>
+                    <p id="weatherMessage">Loading weather data...</p>
+                </div>
 
-                <div class="home-summary"
-                    style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px;">
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <h2>Yesterday's Summary</h2>
+
+                <div class="home-summary">
+                    <div class="card">
                         <h3>Average Light</h3>
-                        <div id="avgLight" style="font-size:20px;font-weight:700;">—</div>
+                        <div id="avgLight">—</div>
                     </div>
 
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div class="card">
                         <h3>Average Temperature (°C)</h3>
-                        <div id="avgTemp" style="font-size:20px;font-weight:700;">—</div>
+                        <div id="avgTemp">—</div>
                     </div>
 
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div class="card">
                         <h3>Average Humidity (%)</h3>
-                        <div id="avgHum" style="font-size:20px;font-weight:700;">—</div>
+                        <div id="avgHum">—</div>
                     </div>
 
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div class="card">
                         <h3>Average Moisture (%)</h3>
-                        <div id="avgMoist" style="font-size:20px;font-weight:700;">—</div>
+                        <div id="avgMoist">—</div>
                     </div>
 
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div class="card">
                         <h3>Average pH</h3>
-                        <div id="avgPH" style="font-size:20px;font-weight:700;">—</div>
+                        <div id="avgPH">—</div>
                     </div>
 
-                    <div class="card"
-                        style="padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div class="card">
                         <h3>Records (today)</h3>
-                        <div id="todayCount" style="font-size:20px;font-weight:700;">0</div>
+                        <div id="todayCount">0</div>
                     </div>
                 </div>
 
-                <p id="homeUpdated" style="margin-top:12px;color:#666;font-size:13px;">Last updated: —</p>
+                <p id="homeUpdated">Last updated: —</p>
 
-                <div id="waterAlert"
-                    style="margin-top:20px;padding:16px;border-radius:8px;background:#f8d7da;color:#721c24;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                    <p id="waterMessage" style="margin:0 0 12px 0;font-weight:600;">
+                <div id="waterAlert">
+                    <p id="waterMessage">
                         Soil moisture of the garden is dropping, click to water manually
                     </p>
-                    <button id="btnWater"
-                        style="padding:10px 16px;border:none;border-radius:6px;background:#078080;color:#fff;font-size:1rem;cursor:pointer;">
-                        Water Now
-                    </button>
+                    <button id="btnWater">Water Now</button>
                 </div>
             </section>
         </main>
@@ -107,13 +98,12 @@
             <section>
                 <h2>Crop Data Table</h2>
                 <div class="crop-block">
-                    <h3 style="margin-top:6px;margin-bottom:6px;">Crop: Lettuce</h3>
-                    <div class="table-controls" style="margin-bottom:12px;display:flex;gap:8px;align-items:center;">
-                        <label for="dateSelect" style="font-weight:600;">Show data for day:</label>
+                    <div class="table-controls">
+                        <label for="dateSelect">Show data for day:</label>
                         <input type="date" id="dateSelect" />
                         <button id="btnFilterDate">Filter</button>
                         <button id="btnClearDate">Clear</button>
-                        <span id="tableStatus" aria-live="polite" style="color:#666;margin-left:8px;"></span>
+                        <span id="tableStatus" aria-live="polite"></span>
                     </div>
 
                     <table id="dataTable">
@@ -137,13 +127,13 @@
             <section>
                 <h2>Crop Data Visualization</h2>
                 <div class="chart-block">
-                    <h3 style="margin-top:6px;margin-bottom:6px;">Crop: Lettuce</h3>
+                    <h3>Crop: Lettuce</h3>
                     <div class="chart-header">
-                        <label for="chartDateSelect" style="font-weight:600;margin-right:8px;">Show data for day:</label>
+                        <label for="chartDateSelect">Show data for day:</label>
                         <input type="date" id="chartDateSelect" />
                         <button id="btnFilterChart">Apply</button>
                         <button id="btnClearChart">Clear</button>
-                        <span id="chartStatus" aria-live="polite" style="color:#666;margin-left:8px;"></span>
+                        <span id="chartStatus" aria-live="polite"></span>
                         <div class="chart-controls">
                             <label>Chart Type:</label>
                             <select id="chartType">
@@ -172,7 +162,6 @@
     <footer>
         <p>&copy; 2025 Hydroponics</p>
     </footer>
-    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btnWater = document.getElementById("btnWater");
@@ -187,9 +176,11 @@
                         waterMessage.textContent = "Garden watered successfully, you're good for the next few hours";
 
                         // Change alert styling to bluish green theme
-                        waterAlert.style.background = "#86ffff";   // aqua/teal tone
-                        waterAlert.style.color = "#232323";        // dark text for contrast
-                        waterAlert.style.border = "2px solid #078080";
+                        waterAlert.style.background = "#f9f9f9";        // neutral light gray background
+                        waterAlert.style.color = "#232323";             // dark text for contrast
+                        waterAlert.style.border = "1px solid #ddd";     // thin, subtle border
+                        waterAlert.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)"; // soft shadow to stand out
+
 
                         // Disable button
                         btnWater.textContent = "Watering...";
@@ -201,9 +192,9 @@
             }
         });
     </script>
+    <script src="js/weather.js"></script>
     <script src="js/apexcharts.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/buttons.js"></script>
 </body>
-
 </html>

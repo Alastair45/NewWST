@@ -1,28 +1,39 @@
+/* ===========================
+   Base / Reset
+=========================== */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: "Poppins", sans-serif;
+  background-color: #e2e2e2; /* light gray background */
+  color: #111111;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #e2ffff;
-  color: #232323;
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* full viewport height */
+  height: 100vh;
 }
 
-/* HEADER */
+/* ===========================
+   Header
+=========================== */
 header {
-  background: #078080;
+  background: #000000; /* black header */
   color: #ffffff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
   height: 50px;
-  flex-shrink: 0; /* prevent shrinking */
+  flex-shrink: 0;
+}
+
+header h1 {
+  font-family: "Yeseva One", cursive;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 header nav {
@@ -36,42 +47,44 @@ header nav a {
   font-size: 0.9rem;
 }
 
-header h1 {
-  font-family: "Yeseva One", cursive;
-  margin: 0;
-  font-size: 1.5rem;
+header nav a:hover {
+  color: #e0e0e0; /* subtle hover */
 }
 
-/* MAIN CONTENT */
+/* ===========================
+   Main Content
+=========================== */
 main {
-  flex: 1;                /* take remaining space */
-  overflow-y: auto;        /* scroll only inside main */
+  flex: 1;
+  overflow-y: auto;
   width: 90%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* spacing between sections */
 }
 
 .content-section {
   background: #ffffff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* FOOTER */
+/* ===========================
+   Footer
+=========================== */
 footer {
-  background: #078080;
+  background: #000000; /* black footer */
   color: #ffffff;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 footer p {
@@ -79,64 +92,129 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* DATE FILTER */
-#dateFilter {
-  padding: 8px 12px;
+/* ===========================
+   Buttons & Inputs
+=========================== */
+button,
+#dateFilter,
+.input-group input,
+.input-group select {
+  padding: 8px 14px;
   font-size: 1rem;
-  border: 2px solid #078080;
-  border-radius: 6px;
-  background-color: #e6f4f1;
-  color: #232323;
-  margin: 10px 0 20px;
+  border-radius: 8px;
+  border: 1px solid #333333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  color: #111111;
 }
 
-/* NOTIFICATIONS */
+button:hover,
+#dateFilter:hover,
+.input-group input:hover,
+.input-group select:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+#dateFilter {
+  background-color: #f0f0f0;
+  margin: 10px 0 20px;
+  max-width: 200px;
+}
+
+/* ===========================
+   Label + Input Group (Date Picker)
+=========================== */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;          /* space between label and input */
+  margin: 10px 0 20px;
+  flex-wrap: wrap;    /* wrap on smaller screens */
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #111111;
+  min-width: 120px;    /* fixed width for label */
+}
+
+.input-group input,
+.input-group #dateFilter {
+  flex: 1;             /* take remaining space */
+  min-width: 150px;
+  max-width: 200px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #333333;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+  color: #111111;
+  cursor: pointer;
+}
+
+.input-group input:hover,
+.input-group #dateFilter:hover {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* ===========================
+   Table
+=========================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #111111; /* black header */
+  color: #ffffff;
+}
+
+.critical-cell {
+  background-color: #f8d7da; /* red alert */
+  color: #721c24;
+  font-weight: bold;
+}
+
+/* ===========================
+   Notifications & Alerts
+=========================== */
 .critical-day {
   margin-bottom: 2rem;
 }
 
 .critical-day h3 {
   margin-bottom: 0.5rem;
-  color: #078080;
+  color: #111111;
   font-size: 1.2rem;
 }
 
-/* TABLE */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #86ffff; /* aqua table background */
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-th, td {
-  border: 1px solid #aaa;
-  padding: 0.6rem;
-  text-align: center;
-}
-
-th {
-  background-color: #078080; /* teal header */
-  color: white;
-}
-
-/* CRITICAL CELL */
-.critical-cell {
-  background-color: #f8d7da; /* light red */
-  color: #721c24;           /* dark red text */
-  font-weight: bold;
-}
-
-/* EMPTY MESSAGE */
 #notificationsContainer p {
   text-align: center;
-  color: #666;
+  color: #666666;
   font-size: 1rem;
   margin-top: 2rem;
 }
 
-/* LEGEND */
+/* ===========================
+   Legend
+=========================== */
 .legend-section {
   margin-top: 2rem;
 }
@@ -153,7 +231,7 @@ th {
   align-items: center;
   gap: 0.6rem;
   font-size: 1rem;
-  color: #232323;
+  color: #111111;
 }
 
 .legend-box {
@@ -161,25 +239,50 @@ th {
   height: 20px;
   border-radius: 4px;
   display: inline-block;
+  border: 2px solid #333333;
 }
 
 .legend-box.safe {
-  background-color: #86ffff; /* aqua safe */
-  border: 2px solid #078080;
+  background-color: #ffffff;
 }
 
 .legend-box.critical {
-  background-color: #f8d7da; /* red critical */
-  border: 2px solid #d9534f;
+  background-color: #f8d7da;
+  border-color: #d9534f;
 }
 
-/* RESPONSIVE */
+/* ===========================
+   Responsive
+=========================== */
 @media (max-width: 600px) {
   main {
+    width: 100%;
     padding: 10px;
   }
-  table th, table td {
+
+  table th,
+  table td {
     font-size: 0.85rem;
     padding: 0.4rem;
   }
+
+  .input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-group label {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .input-group input,
+  .input-group select,
+  .input-group button,
+  #dateFilter {
+    width: 100%;
+    max-width: none;
+  }
 }
+
