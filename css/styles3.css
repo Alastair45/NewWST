@@ -1,4 +1,6 @@
-/* General Reset */
+/* ============================
+   General Reset
+============================ */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,160 +9,123 @@ html, body {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #e2ffff;
-  color: #232323;
+  background-color: #f5f5f5; /* light gray background */
+  color: #000000;
 }
 
-/* HEADER */
+/* ============================
+   Header
+============================ */
 header {
-  background: #078080;
+  background: #000000; /* black */
   color: #ffffff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* center title horizontally */
   align-items: center;
-  padding: 5px 50px;
-  line-height: 30px;
-  height: 40px;
+  padding: 0 50px;
+  height: 50px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 header h1 {
   font-family: "Yeseva One", cursive;
   margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* NAVIGATION */
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
+/* Hamburger (left side) */
+.header-left {
+  position: absolute;
+  left: 20px;
 }
 
-.nav-links button {
-  background: #f45d48;
-  border: none;
-  padding: 5px 20px;
-  color: #fffffe;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.nav-links button:hover {
-  background: #078080;
-  color: #232323;
-}
-
-/* HAMBURGER */
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* SIDEBAR */
+/* ============================
+   Sidebar
+============================ */
 aside#sidebar {
   position: fixed;
   top: 50px;
   left: 0;
   width: 150px;
-  height: calc(100% - 120px);
-  background-color: #e2ffff;
+  height: calc(100% - 90px);
+  background-color: #ffffff;
   padding: 1rem;
   overflow-y: auto;
-  border-right: 2px solid #078080;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+  border-right: 2px solid #cccccc;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.15);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 900;
 }
-aside#sidebar.sidebar-visible { transform: translateX(0); }
+
+aside#sidebar.sidebar-visible {
+  transform: translateX(0);
+}
 
 aside#sidebar ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 aside#sidebar li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #cccccc;
 }
 
 aside#sidebar li a {
   display: block;
   padding: 12px 16px;
   color: #000000;
-  text-decoration: none;
   font-size: 1rem;
-  transition: background 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  transition: background 0.2s ease;
 }
 
 aside#sidebar li a:hover {
-  background-color: #86ffff;
-  color: #232323;
+  background-color: #e0e0e0; /* light gray hover */
 }
 
-/* MAIN CONTAINER */
+/* ============================
+   Main Container
+============================ */
 .container {
   display: flex;
   position: fixed;
-  top: 90px;    /* below header */
-  bottom: 70px; /* above footer */
+  top: 60px;
+  bottom: 50px;
   left: 0;
   right: 0;
   overflow: auto;
   padding: 10px;
-  z-index: 800;
 }
 
-/* MAIN CONTENT */
+/* ============================
+   Content Section
+============================ */
 .content-section {
   flex: 1;
   min-width: 0;
-  border-radius: 10px;
+  background: #ffffff;
+  border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow-wrap: break-word;
 }
 
-.hidden { display: none; }
-
-/* FOOTER */
+/* ============================
+   Footer
+============================ */
 footer {
   position: fixed;
-  background: #078080;
+  background: #000000;
   color: #ffffff;
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,116 +135,133 @@ footer {
   line-height: 30px;
   text-align: center;
   z-index: 1000;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
 
-/* TABLE */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #86ffff;
-}
-th, td {
-  border: 1px solid #aaa;
-  padding: 0.5rem;
-  text-align: center;
-}
-th {
-  background-color: #078080;
-  color: white;
-}
-
-/* CHART */
-canvas {
-  background-color: #e0ffff;
-  border: 1px solid #ccc;
-  max-width: 100%;
-}
-
-/* BUTTONS */
-button {
-  margin: 1rem 0;
-  padding: 5px 10px;
-  background-color: #48a9a6;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 20px;
-  transition: background-color 0.2s;
-}
-button:hover { background-color: #3a918d; }
-
-/* --- Crop Profile Section Styling --- */
-#crop-profile-section h2 {
-  font-family: "Yeseva One", cursive;
-  color: #078080;
-  margin-bottom: 20px;
-}
-
+/* ============================
+   Setup Controls
+============================ */
 .setup-controls {
   display: flex;
-  gap: 20px;
-  align-items: flex-end;
+  align-items: flex-end;  /* align inputs and button to the same baseline */
+  gap: 15px;
   margin-bottom: 30px;
   flex-wrap: wrap;
+}
+
+.setup-controls div {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-controls label {
+  margin-bottom: 5px;
+  font-weight: 600;
 }
 
 .setup-controls select,
 .setup-controls input[type="date"] {
   padding: 10px;
   border-radius: 6px;
-  border: 2px solid #2e8b57;
-  background-color: #e6f4f1;
-  color: #2e8b57;
+  border: 1px solid #cccccc;
+  background-color: #f2f2f2; /* light gray */
+  color: #000000;
   font-size: 1rem;
 }
 
+/* Align Save Button to inputs */
 #btnSaveProfile {
   padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #48a9a6;
-  color: #fff;
+  border-radius: 6px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  margin-top: 28px; /* aligns with the labels above inputs */
 }
-#btnSaveProfile:hover { background: #3a918d; }
 
+#btnSaveProfile:hover {
+  background-color: #e0e0e0;
+  color: #000000;
+}
+
+/* ============================
+   Stage Tracker
+============================ */
 .stage-tracker {
   padding: 20px;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background: #f9f9f9; /* light gray */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin-top: 20px;
 }
-.stage-tracker h3 { color: #2e8b57; }
 
+.stage-tracker h3 {
+  color: #000000;
+}
+
+/* Optimal Conditions */
 .optimal-conditions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 20px;
 }
+
 .card-sm {
-  background-color: #d0f0c0;
-  border: 2px solid #2e8b57;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(46, 139, 87, 0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Stage Table Container */
 #stageTableContainer {
   margin-top: 20px;
-  background: #e6f4f1;
-  border: 2px dashed #2e8b57;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 2px dashed #cccccc;
+  border-radius: 8px;
   padding: 15px;
-  box-shadow: inset 0 2px 6px rgba(46, 139, 87, 0.1);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Responsive tweaks */
+/* ============================
+   Tables
+============================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+th, td {
+  border: 1px solid #cccccc;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+th {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ============================
+   Responsive
+============================ */
 @media (max-width: 768px) {
-  .setup-controls { flex-direction: column; align-items: stretch; }
-  .optimal-conditions { grid-template-columns: 1fr; }
+  .setup-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .optimal-conditions {
+    grid-template-columns: 1fr;
+  }
+
+  #btnSaveProfile {
+    margin-top: 0;
+  }
 }

@@ -32,13 +32,11 @@
             <section>
                 <h2>Current Crop Management</h2>
 
-                <div class="setup-controls"
-                    style="display:flex; gap: 20px; align-items: flex-end; margin-bottom: 30px;">
+                <div class="setup-controls">
 
                     <div>
-                        <label for="cropName" style="font-weight: 600; display: block; margin-bottom: 5px;">Select Crop
-                            Type:</label>
-                        <select id="cropName" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <label for="cropName">Select Crop Type:</label>
+                        <select id="cropName">
                             <option value="Lettuce">Lettuce (Leafy Greens)</option>
                             <option value="Tomato">Tomato (Fruiting)</option>
                             <option value="Basil">Basil (Herb)</option>
@@ -46,44 +44,39 @@
                     </div>
 
                     <div>
-                        <label for="startDate" style="font-weight: 600; display: block; margin-bottom: 5px;">Grow Cycle
-                            Start Date:</label>
-                        <input type="date" id="startDate"
-                            style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <label for="startDate">Grow Cycle Start Date:</label>
+                        <input type="date" id="startDate">
                     </div>
 
-                    <button id="btnSaveProfile"
-                        style="padding: 10px 20px; border: none; border-radius: 6px; background: #078080; color: #fff; cursor: pointer;">
-                        Save Profile
-                    </button>
+                    <button id="btnSaveProfile">Save Profile</button>
                 </div>
 
-                <div class="stage-tracker card"
-                    style="padding: 20px; border-radius: 8px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 20px;">
+                <div class="stage-tracker card">
                     <h3>Lifecycle Tracker</h3>
+
                     <div id="currentStageInfo">
-                        <p style="font-size: 1.1rem; margin: 10px 0;">
+                        <p>
                             Current Crop: <strong id="displayCrop">—</strong>
                         </p>
-                        <p style="font-size: 1.5rem; margin: 10px 0; color: #078080;">
+
+                        <p class="stage-display">
                             Stage: <strong id="displayStage">Loading...</strong>
-                            (<span id="displayDay">Day —</span> / <span id="displayTotalDays">Total Days —</span>)
+                            (<span id="displayDay">Day —</span> /
+                            <span id="displayTotalDays">Total Days —</span>)
                         </p>
 
-                        <div class="optimal-conditions"
-                            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                        <div class="optimal-conditions">
                             <div class="card-sm"><strong>Target Temp:</strong> <span id="targetTemp">—</span></div>
                             <div class="card-sm"><strong>Target pH:</strong> <span id="targetPH">—</span></div>
-                            <div class="card-sm"><strong>Target Light (hrs):</strong> <span id="targetLight">—</span>
-                            </div>
+                            <div class="card-sm"><strong>Target Light (hrs):</strong> <span id="targetLight">—</span></div>
                         </div>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 40px;">Stage Definitions (Read-Only)</h3>
+                <h3>Stage Definitions (Read-Only)</h3>
                 <p>These are the pre-defined stages and their optimal conditions for the selected crop.</p>
-                <div id="stageTableContainer">
-                </div>
+
+                <div id="stageTableContainer"></div>
             </section>
         </main>
     </div>
