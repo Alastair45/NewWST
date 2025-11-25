@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="../css/style4.css"> <!-- link to your main CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <button id="toggleSidebar" aria-label="Toggle Sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1>About</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="crop_profile.html">Crop Profile</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main class="page">
+            <section class="content-section">
+                <h2>About This Dashboard</h2>
+                <p>
+                    This project is designed to provide a clean, minimalist interface for monitoring
+                    agricultural and environmental data. It integrates weather forecasts, parameter
+                    thresholds, and stage tracking into one cohesive platform.
+                </p>
+
+                <div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To empower users with resilient, user‑centric tools that visualize data clearly
+                        and support informed decision‑making.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Features</h3>
+                    <ul>
+                        <li>📊 Interactive charts and tables</li>
+                        <li>🌦️ Weather forecast integration</li>
+                        <li>🔔 Real‑time notifications</li>
+                        <li>⚙️ Customizable parameters and thresholds</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Credits</h3>
+                    <p>
+                        Designed and developed by Nathaniel, with a focus on performance, clarity,
+                        and user autonomy.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dashboard Project. All rights reserved.</p>
+    </footer>
+
+    <!-- Script for sidebar toggle -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("toggleSidebar");
+            const sidebarEl = document.getElementById("sidebar");
+
+            /* ------------------------------
+               Sidebar Toggle
+            ------------------------------*/
+            if (toggleBtn && sidebarEl) {
+                toggleBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    sidebarEl.classList.toggle("sidebar-visible");
+                    toggleBtn.classList.toggle("active");
+                });
+
+                // Close when clicking outside
+                document.addEventListener("click", (e) => {
+                    const isOpen = sidebarEl.classList.contains("sidebar-visible");
+                    const clickedOutside =
+                        !sidebarEl.contains(e.target) &&
+                        !toggleBtn.contains(e.target);
+
+                    if (isOpen && clickedOutside) {
+                        sidebarEl.classList.remove("sidebar-visible");
+                        toggleBtn.classList.remove("active");
+                    }
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>

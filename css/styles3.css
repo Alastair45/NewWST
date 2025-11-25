@@ -78,12 +78,22 @@ aside#sidebar li a {
   display: block;
   padding: 10px;
   color: #111111;
-  text-decoration: none;
+  text-decoration: none; /* no underline by default */
   font-size: 0.9rem;
 }
+
+/* underline only on hover */
 aside#sidebar li a:hover {
   text-decoration: underline;
+  background: #e6e6e6; /* keep your hover background */
 }
+
+/* active link styling (no underline, just background) */
+aside#sidebar li a.active {
+  background: #e6e6e6;
+  font-weight: 600; /* optional: highlight active link */
+}
+
 
 /* ===========================
    Hamburger Icon

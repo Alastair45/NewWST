@@ -144,6 +144,12 @@ aside#sidebar li a:hover {
   text-decoration: underline;
 }
 
+aside li a.active,
+aside li a:hover {
+  background: #e6e6e6;
+  font-weight: 600;
+}
+
 /* ===========================
    Hamburger Icon
 =========================== */

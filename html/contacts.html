@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="../css/style5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <button id="toggleSidebar" aria-label="Toggle Sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1>Contacts</h1>
+    </header>
+    <aside id="sidebar">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="crop_profile.html">Crop Profile</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contacts.html" class="active">Contacts</a></li>
+        </ul>
+    </aside>
+    <div class="container">
+        <main class="page">
+            <section class="content-section">
+                <h2>Get in Touch</h2>
+                <p>
+                    Have questions, feedback, or collaboration ideas? Reach out using the form below
+                    or through the listed contact details.
+                </p>
+
+                <form id="contactForm" class="contact-form">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-details">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li>Email: <a href="mailto:info@dashboard.com">info@dashboard.com</a></li>
+                        <li>Phone: +63 912 345 6789</li>
+                        <li>Location: Calabarzon, Philippines</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Dashboard Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("toggleSidebar");
+            const sidebarEl = document.getElementById("sidebar");
+
+            /* ------------------------------
+               Sidebar Toggle
+            ------------------------------*/
+            if (toggleBtn && sidebarEl) {
+                toggleBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    sidebarEl.classList.toggle("sidebar-visible");
+                    toggleBtn.classList.toggle("active");
+                });
+
+                document.addEventListener("click", (e) => {
+                    const isOpen = sidebarEl.classList.contains("sidebar-visible");
+                    const clickedOutside =
+                        !sidebarEl.contains(e.target) &&
+                        !toggleBtn.contains(e.target);
+
+                    if (isOpen && clickedOutside) {
+                        sidebarEl.classList.remove("sidebar-visible");
+                        toggleBtn.classList.remove("active");
+                    }
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>
