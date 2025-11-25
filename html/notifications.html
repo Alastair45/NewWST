@@ -15,29 +15,29 @@
         </nav>
         <h1>Data Alerts</h1>
     </header>
+    <div class="container">
+        <main class="content-section">
+            <label for="dateFilter">Filter by date:</label>
+            <input type="date" id="dateFilter" />
+            <div id="notificationsContainer"></div>
 
-    <main class="content-section">
-        <label for="dateFilter">Filter by date:</label>
-        <input type="date" id="dateFilter" />
-        <div id="notificationsContainer"></div>
+            <section class="legend-section">
+                <h2>Legend</h2>
+                <p>Color coding used in notifications:</p>
 
-        <section class="legend-section">
-            <h2>Legend</h2>
-            <p>Color coding used in notifications:</p>
-
-            <div class="legend">
-                <div class="legend-item">
-                    <span class="legend-box safe"></span>
-                    <span>Safe / within optimal range</span>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-box safe"></span>
+                        <span>Safe / within optimal range</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-box critical"></span>
+                        <span>Critical / outside safe range</span>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <span class="legend-box critical"></span>
-                    <span>Critical / outside safe range</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
+            </section>
+        </main>
+    </div>
     <footer>
         <p>&copy; 2025 Hydroponics</p>
     </footer>

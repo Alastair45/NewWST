@@ -64,7 +64,7 @@ main {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* spacing between sections */
+
 }
 
 .content-section {
@@ -193,6 +193,20 @@ th {
 }
 
 /* ===========================
+   Container
+=========================== */
+.container {
+  display: flex;
+  position: fixed;
+  top: 40px;
+  bottom: 40px;
+  left: 0; right: 0;
+  overflow: auto;
+  padding: 20px;
+  z-index: 800;
+}
+
+/* ===========================
    Notifications & Alerts
 =========================== */
 .critical-day {
@@ -215,9 +229,6 @@ th {
 /* ===========================
    Legend
 =========================== */
-.legend-section {
-  margin-top: 2rem;
-}
 
 .legend {
   display: flex;
