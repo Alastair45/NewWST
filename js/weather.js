@@ -6,10 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto`;
 
+  // Map weather codes to PNG filenames
   const icons = {
-    0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
-    45: "🌫️", 51: "🌦️", 61: "🌧️", 63: "🌧️",
-    65: "🌧️", 80: "🌦️", 95: "⛈️"
+    0: "sunny.png",
+    1: "partial-sunny.png",
+    2: "partial-sunny.png",
+    3: "cloudy.png",
+    45: "windy.png",
+    51: "drizzle.png",
+    61: "sunny-shower.png",
+    63: "sunny-shower.png",
+    65: "drizzle.png",
+    80: "sunny-shower.png",
+    95: "storm.png"
   };
 
   function formatDay(dateStr) {
@@ -30,18 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
           const codes = data.daily.weather_code;
 
           weatherMessage.innerHTML = `
-            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center;">
+            <div class="forecast-grid">
               ${days.map((day, i) => {
                 const { weekday, dayNum } = formatDay(day);
-                const isToday = i === 0; // first column is today
+                const isToday = i === 0;
+                const iconFile = icons[codes[i]] || "unknown.png";
                 return `
-                  <div style="padding:6px;${isToday ? 'background:#e0f7fa;border:2px solid #00796b;border-radius:6px;' : ''}">
-                    <div style="font-size:14px;font-weight:600;">
-                      ${weekday} ${isToday ? '(Today)' : ''}
-                    </div>
-                    <div style="font-size:12px;color:#555;">${dayNum}</div>
-                    <div style="font-size:24px;">${icons[codes[i]] || "❓"}</div>
-                    <div style="font-size:13px;">${minTemps[i]}°–${maxTemps[i]}°C</div>
+                  <div class="forecast-day${isToday ? ' today-highlight' : ''}">
+                    <div class="forecast-label">${weekday} ${isToday ? '(Today)' : ''}</div>
+                    <div class="forecast-date">${dayNum}</div>
+                    <img src="images/${iconFile}" alt="Weather icon" onerror="this.style.display='none'">
+                    <div class="forecast-temp">${minTemps[i]}°–${maxTemps[i]}°C</div>
                   </div>
                 `;
               }).join("")}

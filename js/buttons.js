@@ -81,3 +81,55 @@ document.addEventListener("DOMContentLoaded", () => {
     applyChartDateFilter(false);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnNotifications = document.getElementById("btnNotifications");
+  const dropdown = document.getElementById("notificationDropdown");
+  const notifCount = document.getElementById("notifCount");
+
+  // Example notification data
+  let notifications = [
+    { id: 1, text: "XML Data Fetch Complete", link: "#", read: true },
+    { id: 2, text: "Multiple Parameter Thresholds Exceeded", link: "html/notifications.html", read: false },
+    { id: 3, text: "Reminder: Water plants today", link: "#", read: false }
+  ];
+
+  function renderNotifications() {
+    dropdown.innerHTML = notifications.map(n => `
+      <li class="${n.read ? '' : 'unread'}">
+        <a href="${n.link}" data-id="${n.id}">${n.text}</a>
+      </li>
+    `).join("");
+
+    // Update badge count
+    const unreadCount = notifications.filter(n => !n.read).length;
+    notifCount.textContent = unreadCount;
+    notifCount.style.display = unreadCount > 0 ? "inline-block" : "none";
+  }
+
+  // Toggle dropdown
+  btnNotifications.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle("hidden");
+  });
+
+  // Mark notification as read when clicked
+  dropdown.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      const id = parseInt(e.target.dataset.id);
+      const notif = notifications.find(n => n.id === id);
+      if (notif) notif.read = true;
+      renderNotifications();
+    }
+  });
+
+  // Close dropdown if clicking outside
+  document.addEventListener("click", (e) => {
+    if (!btnNotifications.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add("hidden");
+    }
+  });
+
+  // Initial render
+  renderNotifications();
+});

@@ -39,56 +39,91 @@ header h1 {
   text-align: center;
 }
 
-/* Hamburger (left side) */
-.header-left {
-  position: absolute;
-  left: 20px;
+/* ===========================
+   Sidebar
+=========================== */
+aside {
+  width: 0;
+  transition: width 0.3s ease;
 }
 
-/* ============================
-   Sidebar
-============================ */
+.sidebar-visible {
+  width: 200px;
+}
+
 aside#sidebar {
   position: fixed;
   top: 50px;
   left: 0;
-  width: 150px;
+  width: 180px;
   height: calc(100% - 90px);
   background-color: #ffffff;
   padding: 1rem;
   overflow-y: auto;
-  border-right: 2px solid #cccccc;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.15);
+  border-right: 1px solid #ddd;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 900;
 }
-
-aside#sidebar.sidebar-visible {
-  transform: translateX(0);
-}
+aside#sidebar.sidebar-visible { transform: translateX(0); }
 
 aside#sidebar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  margin: 0; padding: 0;
 }
-
 aside#sidebar li {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #eee;
 }
-
 aside#sidebar li a {
   display: block;
-  padding: 12px 16px;
-  color: #000000;
-  font-size: 1rem;
+  padding: 10px;
+  color: #111111;
   text-decoration: none;
-  transition: background 0.2s ease;
+  font-size: 0.9rem;
+}
+aside#sidebar li a:hover {
+  text-decoration: underline;
 }
 
-aside#sidebar li a:hover {
-  background-color: #e0e0e0; /* light gray hover */
+/* ===========================
+   Hamburger Icon
+=========================== */
+#toggleSidebar {
+  position: absolute;
+  left: 20px;   /* lock to left edge */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#toggleSidebar span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+#toggleSidebar.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(12.5px);
+}
+
+#toggleSidebar.active span:nth-child(2) {
+  opacity: 0;
+}
+
+#toggleSidebar.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-12.5px);
 }
 
 /* ============================
@@ -118,24 +153,22 @@ aside#sidebar li a:hover {
   overflow-wrap: break-word;
 }
 
-/* ============================
+/* ===========================
    Footer
-============================ */
+=========================== */
 footer {
   position: fixed;
-  background: #000000;
-  color: #ffffff;
-  height: 50px;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  line-height: 30px;
-  text-align: center;
+  background: #000000;
+  border-top: 1px solid #333333;
+  font-size: 0.8rem;
+  color: #ffffff;
   z-index: 1000;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
 /* ============================

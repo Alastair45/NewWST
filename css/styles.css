@@ -335,6 +335,64 @@ button:hover {
 }
 
 /* ===========================
+   Notification Dropdown
+=========================== */
+.notification-wrapper {
+  position: relative; /* anchor for dropdown */
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* directly below the bell */
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  margin: 8px 0 0 0;
+  padding: 0;
+  width: 220px;
+  z-index: 1000;
+}
+
+.dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.dropdown li:last-child {
+  border-bottom: none;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown li a:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+.badge {
+  background: red;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 4px;
+}
+.unread {
+  font-weight: 600;
+  background-color: #f0f0f0;
+}
+
+/* ===========================
    Summary Boxes & Cards
 =========================== */
 .summary-grid {
@@ -358,6 +416,13 @@ button:hover {
 .summary-box li { margin-bottom: 0.5rem; }
 
 .home-summary {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  color: #111111;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
@@ -404,6 +469,23 @@ button:hover {
 #weatherMessage {
   margin: 0;
   font-weight: 500;
+}
+
+.forecast-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.forecast-date {
+  font-size: 12px;
+  color: #555;
+}
+.forecast-temp {
+  font-size: 13px;
+  margin-top: 4px;
+}
+.forecast-day.today-highlight {
+  border: 2px solid #333;
+  background-color: #eee;
 }
 
 .forecast-grid {

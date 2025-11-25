@@ -78,18 +78,18 @@ main {
    Footer
 =========================== */
 footer {
-  background: #000000; /* black footer */
-  color: #ffffff;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
+  background: #000000;
+  border-top: 1px solid #333333;
+  font-size: 0.8rem;
+  color: #ffffff;
+  z-index: 1000;
+  text-align: center;
 }
 
 /* ===========================

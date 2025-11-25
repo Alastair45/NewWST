@@ -21,10 +21,13 @@
         <h1>Hydroponics</h1>
         <nav>
             <ul class="nav-links">
-                <li>
-                    <a href="html/notifications.html" id="btnNotifications" aria-label="Notifications">
-                        🔔
+                <li class="notification-wrapper">
+                    <a href="#" id="btnNotifications" aria-label="Notifications">
+                        🔔 <span id="notifCount" class="badge">3</span>
                     </a>
+                    <ul id="notificationDropdown" class="dropdown hidden">
+                        <!-- Notifications will be injected here -->
+                    </ul>
                 </li>
                 <li><button id="btnArticle">Home</button></li>
                 <li><button id="btnTable">Table</button></li>
@@ -45,7 +48,7 @@
         <main id="article-section" class="content-section">
             <section>
                 <div id="weatherUpdate">
-                    <h3>Latest Weather</h3>
+                    <h3>Weather Forecast</h3>
                     <p id="weatherMessage">Loading weather data...</p>
                 </div>
 
@@ -197,4 +200,5 @@
     <script src="js/script.js"></script>
     <script src="js/buttons.js"></script>
 </body>
+
 </html>
