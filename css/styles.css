@@ -441,7 +441,7 @@ button:hover {
   padding: 16px;
   border-radius: 20px;
 
-  background-image: url("../images/water-bg.jpg");
+  background-image: url("../images/summary-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -629,35 +629,41 @@ button:hover {
    Alerts
 =========================== */
 #waterAlert {
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 16px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  color: #111111;
+  border-radius: 20px;
+  background: url("../images/water-bg.jpg") no-repeat center/cover;
+  color: #232323;
   border: 1px solid #ddd;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
+
 #waterMessage {
   margin: 0 0 12px 0;
   font-weight: 600;
-  flex: 1;
+  flex: content;
 }
+
 #btnWater {
-  padding: 8px 12px;
+  padding: 6px 12px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #111111;
+  border-radius: 20px;
+  background: #000000;
+  color: #ffffff;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
+
 #btnWater:hover {
-  background: #f0f0f0;
-  border-color: #999;
+  background: #ffffff;
+  background: #ffffff;
+  color: #000000;
 }
 
 /* ===========================

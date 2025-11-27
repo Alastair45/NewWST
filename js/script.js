@@ -254,7 +254,6 @@ function updateHomeAverages(useYesterday = false) {
 
   todayCountEl.textContent = rows.length.toString();
 
-  // ✅ Always show "Today" and last update timestamp
   const now = new Date();
   const formatted = now.toLocaleString("en-US", {
     dateStyle: "medium",

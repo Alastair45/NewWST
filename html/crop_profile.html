@@ -33,8 +33,8 @@
             <section>
                 <h2>Current Crop Management</h2>
 
+                <!-- Profile Setup -->
                 <div class="setup-controls">
-
                     <div>
                         <label for="cropName">Select Crop Type:</label>
                         <select id="cropName">
@@ -52,32 +52,33 @@
                     <button id="btnSaveProfile">Save Profile</button>
                 </div>
 
+                <!-- Lifecycle Tracker -->
                 <div class="stage-tracker card">
-                    <h3>Lifecycle Tracker</h3>
-
+                    <h3>Active Lifecycle Tracker</h3>
                     <div id="currentStageInfo">
-                        <p>
-                            Current Crop: <strong id="displayCrop">—</strong>
-                        </p>
-
+                        <p>Current Crop: <strong id="displayCrop">—</strong></p>
                         <p class="stage-display">
-                            Stage: <strong id="displayStage">Loading...</strong>
+                            Stage: <strong id="displayStage">—</strong>
                             (<span id="displayDay">Day —</span> /
                             <span id="displayTotalDays">Total Days —</span>)
                         </p>
-
                         <div class="optimal-conditions">
                             <div class="card-sm"><strong>Target Temp:</strong> <span id="targetTemp">—</span></div>
                             <div class="card-sm"><strong>Target pH:</strong> <span id="targetPH">—</span></div>
-                            <div class="card-sm"><strong>Target Light (hrs):</strong> <span id="targetLight">—</span></div>
+                            <div class="card-sm"><strong>Target Light (hrs):</strong> <span id="targetLight">—</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h3>Stage Definitions (Read-Only)</h3>
-                <p>These are the pre-defined stages and their optimal conditions for the selected crop.</p>
 
-                <div id="stageTableContainer"></div>
+                <h3>Stage Definitions (Reference)</h3>
+                <p>These are the pre-defined stages and their optimal conditions for the selected crop.</p>
+                <div id="stageDefinitionContainer"></div>
+
+
+                <h3>Saved Profiles</h3>
+                <div id="profilesTableContainer"></div>
             </section>
         </main>
     </div>
@@ -86,9 +87,8 @@
         <p>&copy; 2025 Hydroponics</p>
     </footer>
 
-    <script src="../js/script2.js"></script>
+    <script src="../js/buttons.js"></script>
     <script src="../js/crop_profile.js"></script>
-    <script src="../js/"></script>
 </body>
 
 </html>
