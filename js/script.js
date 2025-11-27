@@ -253,9 +253,14 @@ function updateHomeAverages(useYesterday = false) {
   avgPHEl.textContent    = avg(rows.map(r => r.ph));
 
   todayCountEl.textContent = rows.length.toString();
-  homeUpdatedEl.textContent = useYesterday
-    ? `Showing yesterday's data (${key})`
-    : `Showing today's data (${key})`;
+
+  // ✅ Always show "Today" and last update timestamp
+  const now = new Date();
+  const formatted = now.toLocaleString("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  });
+  homeUpdatedEl.textContent = `Last Update: ${formatted}`;
 }
 
 /* ------------------------------

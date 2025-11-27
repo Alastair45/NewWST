@@ -403,75 +403,153 @@ button:hover {
 =========================== */
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
   margin-top: 2rem;
 }
+
 .summary-box {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 1rem;
 }
+
 .summary-box h3 {
   margin-top: 0;
   font-size: 1rem;
   color: #111111;
 }
-.summary-box ul { padding-left: 1rem; }
-.summary-box li { margin-bottom: 0.5rem; }
 
+.summary-box ul {
+  padding-left: 1rem;
+}
+
+.summary-box li {
+  margin-bottom: 0.5rem;
+}
+
+/* Home summary section with background image + fallback */
 .home-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* smaller cards */
+  gap: 12px;
+  margin-top: 12px;
+  min-height: 200px;
+
   margin-bottom: 20px;
   padding: 16px;
-  border-radius: 8px;
-  background: #f9f9f9;
+  border-radius: 20px;
+
+  background-image: url("../images/water-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-color: #f9f9f9;
   color: #111111;
   border: 1px solid #ddd;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
 }
-.card {
-  padding: 12px;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+/* Summary section header styled like weather header */
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1 / -1;   /* span full grid width */
+  margin-bottom: 12px;
+  padding: 8px 0;        /* top & bottom spacing */
 }
-.card h3 {
+
+.summary-header h2 {
+  margin: 0;
+  padding: 8px 0;        /* top & bottom spacing */
+  font-size: 1.6rem;     /* match weather forecast heading size */
+  font-weight: 700;
+  color: #232323;        /* same color as weather header */
+}
+
+.home-summary .card {
+  justify-content: center;
+  text-align: center;
+  padding: 6px;              /* reduced padding */
+  border-radius: 6px;        /* tighter corners */
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent so bg shows */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* lighter shadow */
+}
+
+.home-summary .card h3 {
   margin-top: 0;
-  font-size: 1rem;
+  font-size: 1rem;        /* smaller heading text */
   font-weight: 600;
 }
-.card div {
-  font-size: 20px;
+
+.home-summary .card div {
+  font-size: 14px;           /* smaller main value */
   font-weight: 700;
 }
-#homeUpdated {
+
+.homeUpdated-wrapper {
+  display: flex;              /* allows alignment control */
+  justify-content: flex-start; /* or center/right if you prefer */
   margin-top: 12px;
-  color: #666;
+}
+
+#homeUpdated {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
   font-size: 13px;
+  border-radius: 10px;
+  padding: 6px 10px;
+  white-space: nowrap;        /* keep text on one line */
+  margin: 0;                  /* remove default <p> margins */
+}
+
+.update-label {
+  font-weight: 600;
+  margin-right: 4px;          /* spacing before time */
+}
+
+.update-time {
+  font-weight: 400;
+  color: #555;
 }
 
 /* ===========================
-   Weather
+   Weather Section
 =========================== */
 #weatherUpdate {
   margin-bottom: 20px;
   padding: 16px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  color: #111111;
+  border-radius: 20px;
+  background: url("../images/weather-bg.jpg") no-repeat center/cover;
+  color: #232323;
   border: 1px solid #ddd;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  min-height: 200px;
+  position: relative;
 }
-#weatherUpdate h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  font-weight: 600;
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+#btnReloadWeather {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: #eee;
+  color: #000;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#btnReloadWeather:hover {
+  background: #ddd;
+}
+
 #weatherMessage {
   margin: 0;
   font-weight: 500;
@@ -503,7 +581,7 @@ button:hover {
 }
 
 .forecast-day {
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 8px;
@@ -523,6 +601,29 @@ button:hover {
   font-weight: 600;
   color: #111111;
 }
+
+/* ===========================
+   Loader Spinner
+=========================== */
+.loader {
+  border: 4px solid #f3f3f3; /* light gray */
+  border-top: 4px solid #000000; /* black spinner */
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto; /* center horizontally */
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 /* ===========================
    Alerts

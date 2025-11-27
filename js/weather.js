@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const weatherMessage = document.getElementById("weatherMessage");
+  const btnReload = document.getElementById("btnReloadWeather");
+  const loader = document.getElementById("loader"); // loader element in HTML
 
   const lat = 14.044;
   const lon = 121.157;
 
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto`;
 
-  // Map weather codes to PNG filenames
   const icons = {
     0: "sunny.png",
     1: "partial-sunny.png",
@@ -29,14 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadForecast() {
+    // Show loader
+    if (loader) loader.classList.remove("hidden");
+    weatherMessage.textContent = "";
+
     fetch(url)
       .then(res => res.json())
       .then(data => {
+        // Hide loader
+        if (loader) loader.classList.add("hidden");
+
         if (data && data.daily) {
           const days = data.daily.time;
           const maxTemps = data.daily.temperature_2m_max;
           const minTemps = data.daily.temperature_2m_min;
-          const codes = data.daily.weather_code;
+          const codes = data.daily.weathercode;
 
           weatherMessage.innerHTML = `
             <div class="forecast-grid">
@@ -60,11 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch(err => {
+        // Hide loader
+        if (loader) loader.classList.add("hidden");
         console.error("Forecast fetch error:", err);
-        weatherMessage.textContent = "Error fetching forecast.";
+        weatherMessage.textContent = "An error occurred. Please check your internet connection and reload.";
       });
   }
 
+  // Initial load + auto refresh
   loadForecast();
   setInterval(loadForecast, 1800000);
+
+  // Reload button
+  if (btnReload) {
+    btnReload.addEventListener("click", () => {
+      loadForecast();
+    });
+  }
 });

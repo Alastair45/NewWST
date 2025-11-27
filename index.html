@@ -49,13 +49,18 @@
         <main id="article-section" class="content-section">
             <section>
                 <div id="weatherUpdate">
-                    <h3>Weather Forecast</h3>
+                    <div class="weather-header">
+                        <h2>Weather Forecast</h2>
+                        <button id="btnReloadWeather">⟳ Reload</button>
+                    </div>
+                    <div id="loader" class="loader hidden"></div>
                     <p id="weatherMessage">Loading weather data...</p>
                 </div>
 
-                <h2>Yesterday's Summary</h2>
-
                 <div class="home-summary">
+                    <div class="summary-header">
+                        <h2>Summary</h2>
+                    </div>
                     <div class="card">
                         <h3>Average Light</h3>
                         <div id="avgLight">—</div>
@@ -82,12 +87,16 @@
                     </div>
 
                     <div class="card">
-                        <h3>Records (today)</h3>
+                        <h3>Records</h3>
                         <div id="todayCount">0</div>
                     </div>
+                    <div class="homeUpdated-wrapper">
+                        <strong id="homeUpdated">
+                            <span class="update-label">Last updated:</span>
+                            <span class="update-time">—</span>
+                        </strong>
+                    </div>
                 </div>
-
-                <p id="homeUpdated">Last updated: —</p>
 
                 <div id="waterAlert">
                     <p id="waterMessage">
