@@ -46,9 +46,13 @@ function loadProfiles() {
 function removeProfile(index) {
   const profiles = loadProfiles();
   if (index >= 0 && index < profiles.length) {
+    const confirmDelete = confirm(`Are you sure you want to remove the profile for ${profiles[index].cropName}?`);
+    if (!confirmDelete) return; // cancel if user clicks "Cancel"
+
     profiles.splice(index, 1);
     localStorage.setItem("hydro_crop_profiles", JSON.stringify(profiles));
     renderProfilesTable();
+    alert("Profile removed.");
   }
 }
 
